@@ -6,8 +6,6 @@ local game = {}
 function love.load()
     width, height = love.graphics.getDimensions( )
 
-    print("load")
-
     game = Game.new()
 
     local s = Santa.new()

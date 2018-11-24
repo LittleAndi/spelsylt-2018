@@ -36,8 +36,6 @@ function Santa.new()
     santa.speedX = 0.0
     santa.speedY = 0.0
 
-    print('new')
-
     return santa
 end
 
@@ -87,7 +85,6 @@ function Santa:addAnimationSprite(path, imageCount)
     animationSprite.quads = {}
     
     for i=0, imageCount-1 do
-        --print(string.format(path, i))
         table.insert(animationSprite.quads, love.graphics.newImage(string.format(path, i)))
     end
 
