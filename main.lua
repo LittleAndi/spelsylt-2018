@@ -1,15 +1,17 @@
 Game = require('src.Game')
 Santa = require('src.Santa')
 
+local game = {}
+
 function love.load()
     width, height = love.graphics.getDimensions( )
 
     print("load")
 
-    game = Game:new()
+    game = Game.new()
 
-    local s = Santa:new(nil)
-    game:add(s)
+    local s = Santa.new()
+    game.objects.santa = s;
 end
 
 function love.update(dt)
@@ -18,11 +20,11 @@ function love.update(dt)
     end
 
     if (love.keyboard.isDown("right")) then
-        Santa:run(1)
+        game.objects.santa:run(1)
     end
 
     if (love.keyboard.isDown("left")) then
-        Santa:run(-1)
+        game.objects.santa:run(-1)
     end
 
     game:update(dt)
@@ -30,11 +32,17 @@ end
 
 function love.keyreleased(key, scancode)
     if (scancode == "right") then
-        Santa:stop()
+        game.objects.santa:stop()
     end
 
     if (scancode == "left") then
-        Santa:stop()
+        game.objects.santa:stop()
+    end
+end
+
+function love.keypressed(key, scancode)
+    if (scancode == "up") then
+        game.objects.santa:jump()
     end
 end
 
